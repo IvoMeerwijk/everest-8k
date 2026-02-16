@@ -354,3 +354,39 @@ ul.clean{
   color: var(--muted);
   line-height: 1.7;
 }
+/* ===== Full-page background (mountain + overlays) ===== */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(7,17,27,0.78) 65%, rgba(5,11,18,0.95) 100%),
+    url("images/mounteverest.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 650px at 15% 10%, rgba(56,189,248,0.16), transparent 60%),
+    radial-gradient(800px 600px at 85% 15%, rgba(52,211,153,0.12), transparent 60%),
+    radial-gradient(900px 800px at 40% 95%, rgba(251,191,36,0.10), transparent 55%);
+}
+/* Hero should not have a separate background anymore */
+.hero::before{ background: none !important; }
+.hero::after{ display:none; }
+.hero{ background: transparent; }
+
+.section{
+  background: rgba(7,17,27,0.35);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
